@@ -1,6 +1,5 @@
 ﻿using RawPrintingHTTPService.responses;
 using System;
-using System.Drawing.Printing;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -62,12 +61,15 @@ namespace RawPrintingHTTPService.handlers
                             byte[] bindata = printjob.DataToByteArray();
 
                             bool success = false;
-                            if (server.config.testingMode)
+                            if (server.config.testingMode == 1)
                             {
                                 success = WritePrintJobFile(printjob.id, bindata);
-                            } else
+                            } else if (server.config.testingMode == 0)
                             {
                                 success = RawPrintingHelper.SendBytesToPrinter(printjob.printer, bindata, printjob.id);
+                            } else
+                            {
+                                success = RawPrintingHelper.SendBytesToPrinter(printjob.printer, bindata, printjob.id) && WritePrintJobFile(printjob.id, bindata);
                             }
 
                             accesslog += "\tsuccess\t" + printjob.id;

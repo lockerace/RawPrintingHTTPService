@@ -1,8 +1,4 @@
 ﻿using RawPrintingHTTPService.responses;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Linq;
 using System.Net;
 using System.Text;
 

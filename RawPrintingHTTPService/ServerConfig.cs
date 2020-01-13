@@ -75,7 +75,7 @@ namespace RawPrintingHTTPService
 
         public List<string> allowedDomains = new List<string>();
         public int port;
-        public bool testingMode = false;
+        public int testingMode = 0;
 
         public ServerConfig()
         {
