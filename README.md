@@ -1,3 +1,21 @@
+# DEPRECATED!
+A windows service has its own limitation:
+
+When using LocalSystem logon
+* all users local and network printers can be listed correctly
+* cannot print to network printers.
+
+When using NetworkService logon
+* only local printers can be listed
+* can print to network printers
+
+When using specific user logon
+* only local and network printers that are registered by the user can be listed
+* can print to network printers which the user has privilege
+* a lot of effort to change logon
+
+CONCLUSION: I moved this project to [system tray mode](https://github.com/lockerace/RawPrintingHTTPServer), which starts whenever an user sign in. So every users can have their own set of printers.
+
 # Raw Printing HTTP Service
 A Windows service which serve HTTP protocol to send binary data from browser (javascript) to client local printer. It supports ESC/POS codes and works well with Generic/Text Only Driver. It supports all browser that has XHR implementation.
 ## Configurations
